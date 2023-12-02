@@ -7,6 +7,7 @@ public class Employee {
     private double monthlySalary = 0;
     private double rate;
     private Vehicle employeeVehicle;
+    private Contract contract;
 
     public Employee(String name, int birthYear) {
         this.name = name;
@@ -80,15 +81,43 @@ public class Employee {
             return "Name: " + name + ", a " + this.getClass().getSimpleName() +
                     "\nAge: " + age +
                     "\nEmployee has a " + employeeVehicle.getClass().getSimpleName() +
-                    "\n"+employeeVehicle+
-                    "\n" + name + " has a occupation rate: " + rate + "%";
+                    "\n" + employeeVehicle +
+                    "\n" + name + " has a occupation rate: " + (int)rate + "%";
         } else {
             return "Name: " + name + ", a " + this.getClass().getSimpleName() +
                     "\nAge: " + age +
-                    "\n" + name + " has a occupation rate: " + rate + "%";
+                    "\n" + name + " has a occupation rate: " + (int)rate + "%";
         }
     }
+
+    public void signContract(Contract contract) {
+        this.contract = contract;
+    }
+
+    public String contractInfo() {
+
+        String contractInfo = "";
+
+        if (contract instanceof PermanentContract) {
+            contractInfo = name + " is a " + this.getClass().getSimpleName() + ". he is " +
+                    (((PermanentContract) contract).isMarried() ? "" : "not") + " married and has " + ((PermanentContract) contract).getNumChildren() +
+                    " children.\nHe/She has worked for " + ((PermanentContract) contract).getDaysWorked() +
+                    " days and upon contract his/her monthly salary is " + ((PermanentContract) contract).getMonthlySalary() + "\n";
+
+        } else if (contract instanceof TemporaryContract) {
+
+            contractInfo = name + " is a " + this.getClass().getSimpleName() +
+                    ". he is a temporary employee with " +
+                    ((TemporaryContract) contract).getHourlyWage() +
+                    " hourly wage and he has worked for " +
+                    ((TemporaryContract) contract).getHoursWorked() + " hours" + "\n";
+
+        }
+        return contractInfo;
+
+    }
 }
+
 
 // Manager subclass
 class Manager extends Employee {

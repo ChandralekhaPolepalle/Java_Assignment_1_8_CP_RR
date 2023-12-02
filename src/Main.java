@@ -12,9 +12,9 @@ public class Main {
         management.hireTest2();
 
 
-          // Test part 3
-//        System.out.println("Test 3: ");
-//        System.out.println("Employees description: ");
-//        management.hireTest3();
+        // Test part 3
+        System.out.println("Test 3: ");
+        System.out.println("Employees description: ");
+        management.hireTest3();
     }
 }
