@@ -2,7 +2,6 @@
 public interface Contract {
     public double getSalary();
 
-
 }
 
 // Permanent Contract
@@ -48,6 +47,13 @@ class PermanentContract implements Contract {
         return married;
     }
 
+    public String toString() {
+        return " is a " + this.getClass().getSimpleName() + ". he is " +
+                (this.isMarried() ? "" : "not") + " married and has " + this.getNumChildren() +
+                " children.\nHe/She has worked for " + this.getDaysWorked() +
+                " days and upon contract his/her monthly salary is " + this.getMonthlySalary() + "\n";
+    }
+
 }
 // Temporary Contract
 class TemporaryContract implements Contract {
@@ -68,6 +74,14 @@ class TemporaryContract implements Contract {
     }
     public double getSalary() {
         return hourlyWage * hoursWorked;
+    }
+
+    public String toString() {
+        return " is a " + this.getClass().getSimpleName() +
+                ". he is a temporary employee with " +
+                this.getHourlyWage() +
+                " hourly wage and he has worked for " +
+                this.getHoursWorked() + " hours" + "\n";
     }
 
 }
