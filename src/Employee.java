@@ -14,6 +14,7 @@ public class Employee {
         this.birthYear = birthYear;
         this.age = calculateAge();
         this.rate = 100; // default 100%
+        System.out.println("We have a new employee: " + this.name +", " + this.getClass().getSimpleName().toLowerCase());
     }
 
     public Employee(String name, int birthYear, Vehicle employeeVehicle) {
@@ -22,6 +23,7 @@ public class Employee {
         this.age = calculateAge();
         this.rate = 100; // default 100%
         this.employeeVehicle = employeeVehicle;
+        System.out.println("We have a new employee: " + this.name +", " + this.getClass().getSimpleName().toLowerCase());
     }
 
     public Employee(String name, int birthYear, double rate) {
@@ -29,6 +31,7 @@ public class Employee {
         this.birthYear = birthYear;
         this.age = calculateAge();
         setrate(rate);
+        System.out.println("We have a new employee: " + this.name +", " + this.getClass().getSimpleName().toLowerCase());
     }
 
     public Employee(String name, int birthYear, double rate, Vehicle employeeVehicle) {
@@ -37,6 +40,7 @@ public class Employee {
         this.age = calculateAge();
         setrate(rate);
         this.employeeVehicle = employeeVehicle;
+        System.out.println("We have a new employee: " + this.name +", " + this.getClass().getSimpleName().toLowerCase());
     }
 
     public String getName() {
@@ -108,31 +112,24 @@ class Manager extends Employee {
         super(name, birthYear);
         this.nbClients = nbClients;
         this.nbTravelDays = nbTravelDays;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
     public Manager(String name, int birthYear, int nbClients, int nbTravelDays, Vehicle vehicle) {
         super(name, birthYear, vehicle);
         this.nbClients = nbClients;
         this.nbTravelDays = nbTravelDays;
-        System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
     public Manager(String name, int birthYear, int nbClients, int nbTravelDays,double rate) {
         super(name, birthYear, rate);
         this.nbClients = nbClients;
         this.nbTravelDays = nbTravelDays;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
     public Manager(String name, int birthYear, int nbClients, int nbTravelDays,double rate, Vehicle vehicle) {
         super(name, birthYear, rate, vehicle);
         this.nbClients = nbClients;
         this.nbTravelDays = nbTravelDays;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
     @Override
@@ -160,24 +157,19 @@ class Tester extends Employee {
     public Tester(String name, int birthYear, int nbBugs) {
         super(name, birthYear);
         this.nbBugs = nbBugs;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
     public Tester(String name, int birthYear, int nbBugs, Vehicle vehicle) {
         super(name, birthYear, vehicle);
         this.nbBugs = nbBugs;
-        System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
     public Tester(String name, int birthYear, int nbBugs, double rate) {
         super(name, birthYear,rate);
         this.nbBugs = nbBugs;
-        System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
 
     public Tester(String name, int birthYear, int nbBugs, double rate, Vehicle vehicle) {
         super(name, birthYear,rate, vehicle);
         this.nbBugs = nbBugs;
-        System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
 
     @Override
@@ -204,29 +196,21 @@ class Programmer extends Employee {
     public Programmer(String name, int birthYear, int nbProjects) {
         super(name, birthYear);
         this.nbProjects = nbProjects;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
     public Programmer(String name, int birthYear, int nbProjects, Vehicle vehicle) {
         super(name, birthYear, vehicle);
         this.nbProjects = nbProjects;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
     public Programmer(String name, int birthYear, int nbProjects,double rate) {
         super(name, birthYear, rate);
         this.nbProjects = nbProjects;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
     public Programmer(String name, int birthYear, int nbProjects,double rate, Vehicle vehicle) {
         super(name, birthYear, rate, vehicle);
         this.nbProjects = nbProjects;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
     @Override
