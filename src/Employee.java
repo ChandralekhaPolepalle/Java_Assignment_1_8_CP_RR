@@ -4,37 +4,37 @@ public class Employee {
     private String name;
     private int birthYear;
     private int age;
-    private double monthlyIncome = 0;
-    private double occupationRate;
+    private double monthlySalary = 0;
+    private double rate;
     private Vehicle employeeVehicle;
 
     public Employee(String name, int birthYear) {
         this.name = name;
         this.birthYear = birthYear;
         this.age = calculateAge();
-        this.occupationRate = 100; // default 100%
+        this.rate = 100; // default 100%
     }
 
     public Employee(String name, int birthYear, Vehicle employeeVehicle) {
         this.name = name;
         this.birthYear = birthYear;
         this.age = calculateAge();
-        this.occupationRate = 100; // default 100%
+        this.rate = 100; // default 100%
         this.employeeVehicle = employeeVehicle;
     }
 
-    public Employee(String name, int birthYear, double occupationRate) {
+    public Employee(String name, int birthYear, double rate) {
         this.name = name;
         this.birthYear = birthYear;
         this.age = calculateAge();
-        setOccupationRate(occupationRate);
+        setrate(rate);
     }
 
-    public Employee(String name, int birthYear, double occupationRate, Vehicle employeeVehicle) {
+    public Employee(String name, int birthYear, double rate, Vehicle employeeVehicle) {
         this.name = name;
         this.birthYear = birthYear;
         this.age = calculateAge();
-        setOccupationRate(occupationRate);
+        setrate(rate);
         this.employeeVehicle = employeeVehicle;
     }
 
@@ -42,25 +42,25 @@ public class Employee {
         return name;
     }
 
-    public void setMonthlyIncome(double monthlyIncome) {
-        this.monthlyIncome = monthlyIncome;
+    public void setmonthlySalary(double monthlySalary) {
+        this.monthlySalary = monthlySalary;
     }
 
-    public double getOccupationRate() {
-        return occupationRate;
+    public double getrate() {
+        return rate;
     }
 
-    public double getMonthlyIncome() {
-        return monthlyIncome;
+    public double getmonthlySalary() {
+        return monthlySalary;
     }
 
-    public void setOccupationRate(double occupationRate) {
-        if (occupationRate < 10) {
-            this.occupationRate = 10;
-        } else if (occupationRate > 100) {
-            this.occupationRate = 100;
+    public void setrate(double rate) {
+        if (rate < 10) {
+            this.rate = 10;
+        } else if (rate > 100) {
+            this.rate = 100;
         } else {
-            this.occupationRate = occupationRate;
+            this.rate = rate;
         }
     }
 
@@ -69,7 +69,7 @@ public class Employee {
     }
 
     public double annualIncome() {
-        double baseIncome = 12 * monthlyIncome * occupationRate;
+        double baseIncome = 12 * monthlySalary * rate;
         double bonuses = 0;
         return baseIncome + bonuses;
     }
@@ -81,11 +81,11 @@ public class Employee {
                     "\nAge: " + age +
                     "\nEmployee has a " + employeeVehicle.getClass().getSimpleName() +
                     "\n"+employeeVehicle+
-                    "\n" + name + " has a occupation rate: " + occupationRate + "%";
+                    "\n" + name + " has a occupation rate: " + rate + "%";
         } else {
             return "Name: " + name + ", a " + this.getClass().getSimpleName() +
                     "\nAge: " + age +
-                    "\n" + name + " has a occupation rate: " + occupationRate + "%";
+                    "\n" + name + " has a occupation rate: " + rate + "%";
         }
     }
 }
@@ -93,50 +93,50 @@ public class Employee {
 // Manager subclass
 class Manager extends Employee {
 
-    private int numOfClients;
-    private int daysTravelled;
+    private int nbClients;
+    private int nbTravelDays;
 
     static final int GAIN_FACTOR_CLIENT = 500;
 
     static final int GAIN_FACTOR_TRAVEL = 100;
 
-    public Manager(String name, int birthYear, int numOfClients, int daysTravelled) {
+    public Manager(String name, int birthYear, int nbClients, int nbTravelDays) {
         super(name, birthYear);
-        this.numOfClients = numOfClients;
-        this.daysTravelled = daysTravelled;
+        this.nbClients = nbClients;
+        this.nbTravelDays = nbTravelDays;
 
         System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
-    public Manager(String name, int birthYear, int numOfClients, int daysTravelled, Vehicle vehicle) {
+    public Manager(String name, int birthYear, int nbClients, int nbTravelDays, Vehicle vehicle) {
         super(name, birthYear, vehicle);
-        this.numOfClients = numOfClients;
-        this.daysTravelled = daysTravelled;
+        this.nbClients = nbClients;
+        this.nbTravelDays = nbTravelDays;
         System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
-    public Manager(String name, int birthYear, int numOfClients, int daysTravelled,double occupationRate) {
-        super(name, birthYear, occupationRate);
-        this.numOfClients = numOfClients;
-        this.daysTravelled = daysTravelled;
+    public Manager(String name, int birthYear, int nbClients, int nbTravelDays,double rate) {
+        super(name, birthYear, rate);
+        this.nbClients = nbClients;
+        this.nbTravelDays = nbTravelDays;
 
         System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
-    public Manager(String name, int birthYear, int numOfClients, int daysTravelled,double occupationRate, Vehicle vehicle) {
-        super(name, birthYear, occupationRate, vehicle);
-        this.numOfClients = numOfClients;
-        this.daysTravelled = daysTravelled;
+    public Manager(String name, int birthYear, int nbClients, int nbTravelDays,double rate, Vehicle vehicle) {
+        super(name, birthYear, rate, vehicle);
+        this.nbClients = nbClients;
+        this.nbTravelDays = nbTravelDays;
 
         System.out.println("We have a new employee: " + this.getName() + ", a manager.");
     }
 
     @Override
     public double annualIncome() {
-        double baseIncome = 12 * this.getMonthlyIncome() * this.getOccupationRate();
+        double baseIncome = 12 * this.getmonthlySalary() * this.getrate();
         double bonuses = 0;
-        double clientBonus = GAIN_FACTOR_CLIENT * this.numOfClients;
-        double travelBonus = GAIN_FACTOR_TRAVEL * this.daysTravelled;
+        double clientBonus = GAIN_FACTOR_CLIENT * this.nbClients;
+        double travelBonus = GAIN_FACTOR_TRAVEL * this.nbTravelDays;
         bonuses = clientBonus + travelBonus;
         return baseIncome + bonuses;
     }
@@ -144,49 +144,49 @@ class Manager extends Employee {
     public String toString() {
 
         return super.toString() +
-                " He/She travelled " + daysTravelled +" days and has brought " +
-                numOfClients + " new clients."+
+                " He/She travelled " + nbTravelDays +" days and has brought " +
+                nbClients + " new clients."+
                 "\nHis/Her estimated annual income is "+ annualIncome();
     }
 }
 
 class Tester extends Employee {
-    private int bugsSolved;
+    private int nbBugs;
     static final int GAIN_FACTOR_ERROR = 10;
-    public Tester(String name, int birthYear, int bugsSolved) {
+    public Tester(String name, int birthYear, int nbBugs) {
         super(name, birthYear);
-        this.bugsSolved = bugsSolved;
+        this.nbBugs = nbBugs;
 
         System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
-    public Tester(String name, int birthYear, int bugsSolved, Vehicle vehicle) {
+    public Tester(String name, int birthYear, int nbBugs, Vehicle vehicle) {
         super(name, birthYear, vehicle);
-        this.bugsSolved = bugsSolved;
+        this.nbBugs = nbBugs;
         System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
-    public Tester(String name, int birthYear, int bugsSolved, double occupationRate) {
-        super(name, birthYear,occupationRate);
-        this.bugsSolved = bugsSolved;
+    public Tester(String name, int birthYear, int nbBugs, double rate) {
+        super(name, birthYear,rate);
+        this.nbBugs = nbBugs;
         System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
 
-    public Tester(String name, int birthYear, int bugsSolved, double occupationRate, Vehicle vehicle) {
-        super(name, birthYear,occupationRate, vehicle);
-        this.bugsSolved = bugsSolved;
+    public Tester(String name, int birthYear, int nbBugs, double rate, Vehicle vehicle) {
+        super(name, birthYear,rate, vehicle);
+        this.nbBugs = nbBugs;
         System.out.println("We have a new employee: " + this.getName() + ", a tester.");
     }
 
     @Override
     public double annualIncome() {
-        double baseIncome = 12 * this.getMonthlyIncome() * this.getOccupationRate();
-        double bonuses = GAIN_FACTOR_ERROR * this.bugsSolved;
+        double baseIncome = 12 * this.getmonthlySalary() * this.getrate();
+        double bonuses = GAIN_FACTOR_ERROR * this.nbBugs;
         return baseIncome + bonuses;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                " and corrected " + bugsSolved + " bugs."+
+                " and corrected " + nbBugs + " bugs."+
                 "\nHis/Her estimated annual income is "+ annualIncome();
     }
 
@@ -194,48 +194,48 @@ class Tester extends Employee {
 
 class Programmer extends Employee {
 
-    private int projectsCompleted;
+    private int nbProjects;
     static final int GAIN_FACTOR_PROJECTS = 200;
 
-    public Programmer(String name, int birthYear, int projectsCompleted) {
+    public Programmer(String name, int birthYear, int nbProjects) {
         super(name, birthYear);
-        this.projectsCompleted = projectsCompleted;
+        this.nbProjects = nbProjects;
 
         System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
-    public Programmer(String name, int birthYear, int projectsCompleted, Vehicle vehicle) {
+    public Programmer(String name, int birthYear, int nbProjects, Vehicle vehicle) {
         super(name, birthYear, vehicle);
-        this.projectsCompleted = projectsCompleted;
+        this.nbProjects = nbProjects;
 
         System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
-    public Programmer(String name, int birthYear, int projectsCompleted,double occupationRate) {
-        super(name, birthYear, occupationRate);
-        this.projectsCompleted = projectsCompleted;
+    public Programmer(String name, int birthYear, int nbProjects,double rate) {
+        super(name, birthYear, rate);
+        this.nbProjects = nbProjects;
 
         System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
-    public Programmer(String name, int birthYear, int projectsCompleted,double occupationRate, Vehicle vehicle) {
-        super(name, birthYear, occupationRate, vehicle);
-        this.projectsCompleted = projectsCompleted;
+    public Programmer(String name, int birthYear, int nbProjects,double rate, Vehicle vehicle) {
+        super(name, birthYear, rate, vehicle);
+        this.nbProjects = nbProjects;
 
         System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
     }
 
     @Override
     public double annualIncome() {
-        double baseIncome = 12 * this.getMonthlyIncome() * this.getOccupationRate();
-        double bonuses = GAIN_FACTOR_PROJECTS * this.projectsCompleted;
+        double baseIncome = 12 * this.getmonthlySalary() * this.getrate();
+        double bonuses = GAIN_FACTOR_PROJECTS * this.nbProjects;
         return baseIncome + bonuses;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                " and completed " + projectsCompleted + " projects." +
+                " and completed " + nbProjects + " projects." +
                 "\nHis/Her estimated annual income is "+ annualIncome();
     }
 
