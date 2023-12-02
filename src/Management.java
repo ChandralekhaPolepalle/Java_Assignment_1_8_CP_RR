@@ -1,139 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// Employee class
-class Employee {
-
-    private String name;
-    private int birthYear;
-    private int age;
-    private double monthlyIncome;
-    private double occupationRate;
-
-    public Employee(String name, int birthYear) {
-        this.name = name;
-        this.birthYear = birthYear;
-        this.age = calculateAge();
-        this.occupationRate = 100; // default 100%
-    }
-
-    public Employee(String name, int birthYear, double occupationRate) {
-        this.name = name;
-        this.birthYear = birthYear;
-        this.age = calculateAge();
-        setOccupationRate(occupationRate);
-    }
-
-    // Encapsulation with getters and setters
-    public String getName() {
-        return name;
-    }
-
-    public void setMonthlyIncome(double monthlyIncome) {
-        this.monthlyIncome = monthlyIncome;
-    }
-
-    public double getOccupationRate() {
-        return occupationRate;
-    }
-
-    public void setOccupationRate(double occupationRate) {
-        if(occupationRate < 10) {
-            this.occupationRate = 10;
-        } else if(occupationRate > 100) {
-            this.occupationRate = 100;
-        } else {
-            this.occupationRate = occupationRate;
-        }
-    }
-
-    private int calculateAge() {
-        return 2023 - birthYear;
-    }
-
-}
-
-// Manager subclass
-class Manager extends Employee {
-
-    private int numOfClients;
-    private int daysTravelled;
-
-    public Manager(String name, int birthYear, int numOfClients, int daysTravelled) {
-        super(name, birthYear);
-        this.numOfClients = numOfClients;
-        this.daysTravelled = daysTravelled;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a manager.");
-    }
-
-    public Manager(String name, int birthYear, int numOfClients, int daysTravelled,double occupationRate) {
-        super(name, birthYear, occupationRate);
-        this.numOfClients = numOfClients;
-        this.daysTravelled = daysTravelled;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a manager.");
-    }
-
-}
-
-class Tester extends Employee {
-
-    private int bugsSolved;
-
-    public Tester(String name, int birthYear, int bugsSolved) {
-        super(name, birthYear);
-        this.bugsSolved = bugsSolved;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a tester.");
-    }
-
-    public Tester(String name, int birthYear, int bugsSolved, double occupationRate) {
-        super(name, birthYear,occupationRate);
-        this.bugsSolved = bugsSolved;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a tester.");
-    }
-
-}
-
-class Programmer extends Employee {
-
-    private int projectsCompleted;
-
-    public Programmer(String name, int birthYear, int projectsCompleted) {
-        super(name, birthYear);
-        this.projectsCompleted = projectsCompleted;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
-    }
-
-    public Programmer(String name, int birthYear, int projectsCompleted,double occupationRate) {
-        super(name, birthYear, occupationRate);
-        this.projectsCompleted = projectsCompleted;
-
-        System.out.println("We have a new employee: " + this.getName() + ", a programmer.");
-    }
-
-}
-
-// Similar subclasses Tester, Programmer
 public class Management {
 //    static double workingDaysPerMonth = 20.0;
-//
       List<Employee> employees = new ArrayList<>();
-//
-//    // constructor for Motorcycle
-//    // make, plate, color, category, sidecar
-//    Motorcycle m1 = new Motorcycle("Kawasaki", "Custom Plate", "Yellow", VehicleType.RACE, false);
-//    Motorcycle m2 = new Motorcycle("Honda", "Custom Plate", "Black", VehicleType.NOT_FOR_RACE, true);
-//
-//    // constructor for Car
-//    // make, plate, color, category, gear, type
-//    Car vt1 = new Car("Lamborghini", "Custom Plate", "White", VehicleType.Family, Gear.Manual, CarType.Sport);
-//    Car vt2 = new Car("BMW", "Custom Plate", "Black", VehicleType.Family, Gear.Automatic, CarType.Sedan);
-//    Car vt3 = new Car("Renault Clio", "Custom Plate", "Blue", VehicleType.Family, Gear.Manual, CarType.Hatchback);
-//    Car vt4 = new Car("Mazda", "Custom Plate", "White", VehicleType.Family, Gear.Automatic, CarType.SUV);
+
+    // constructor for Motorcycle
+    // make, plate, color, category, sidecar
+    Motorcycle m1 = new Motorcycle("Kawasaki", "Custom Plate", "Yellow", VehicleType.RACE, false);
+    Motorcycle m2 = new Motorcycle("Honda", "Custom Plate", "Black", VehicleType.NOT_FOR_RACE, true);
+
+    // constructor for Car
+    // make, plate, color, category, gear, type
+    Car vt1 = new Car("Lamborghini", "Custom Plate", "White", VehicleType.Family, Gear.Manual, CarType.Sport);
+    Car vt2 = new Car("BMW", "Custom Plate", "Black", VehicleType.Family, Gear.Automatic, CarType.Sedan);
+    Car vt3 = new Car("Renault Clio", "Custom Plate", "Blue", VehicleType.Family, Gear.Manual, CarType.Hatchback);
+    Car vt4 = new Car("Mazda", "Custom Plate", "White", VehicleType.Family, Gear.Automatic, CarType.SUV);
 
     //    Employee constructors
     // Manager: name, birthYear, nbClients, nbTravelDays, rate
@@ -152,20 +34,20 @@ public class Management {
     // Manager: name, birthYear, nbClients, nbTravelDays, rate, employeeVehicle
     // Programmer: name, birthYear, nbProjects, rate, employeeVehicle
     // Tester: name, birthYear, nbBugs, rate, employeeVehicle
-//    void hireTest2() {
-//        employees.clear();
-//        employees.add(new Manager("Serge", 1985, 30, 4, vt1));
-//        employees.add(new Manager("Cindy", 1974, 20, 6, 80, vt2));
-//        employees.add(new Programmer("Paul", 1993, 3, 75, m1));
-//        employees.add(new Tester("Pierre", 1987, 124, 50, m2));
-//        employees.add(new Programmer("Matt", 1981, 5, 110, vt4));
-//        employees.add(new Programmer("Sarah", 1986, 3, vt3));
-//        for (Employee employee : employees) {
-//            System.out.println("-------------------------");
-//            System.out.println(employee);
-//            System.out.println("-------------------------");
-//        }
-//    }
+    void hireTest2() {
+        employees.clear();
+        employees.add(new Manager("Serge", 1985, 30, 4, vt1));
+        employees.add(new Manager("Cindy", 1974, 20, 6, 80, vt2));
+        employees.add(new Programmer("Paul", 1993, 3, 75, m1));
+        employees.add(new Tester("Pierre", 1987, 124, 50, m2));
+        employees.add(new Programmer("Matt", 1981, 5, 110, vt4));
+        employees.add(new Programmer("Sarah", 1986, 3, vt3));
+        for (Employee employee : employees) {
+            System.out.println("-------------------------");
+            System.out.println(employee);
+            System.out.println("-------------------------");
+        }
+    }
 
 //    void hireTest3() {
 //        employees.clear();
